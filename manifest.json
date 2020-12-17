@@ -1,53 +1,25 @@
 {
-	// Computer-friendly name; unique for your organization
 	"name": "fw-challenge-sse",
-
-	// Human-friendly name; displayed in user interface
 	"label": "Flywheel Challenge",
-
-	// A brief description of the gear's purpose; ideally 1-4 sentences
 	"description": "This function takes data for a single subject as input and performs N4 Bias Field Correction Followed by Non-Local-Means Denoising assuming a Rician Distribution and a 1x1x1mm patch size. Bias field and noise estimates are saved in the output directory.",
-
-	// Human-friendly version identifier
 	"version": "0.00",
-
-	// The author of this gear or algorithm.
 	"author":  "Shady El Damaty",
-
-	// (Optional) the maintainer, which may be distinct from the algorithm author.
-	// Can be the same as the author field if both roles were filled by the same individual.
 	"maintainer":  "Shady El Damaty",
-
-	// (Optional) Any citations you wish to add.
 	"cite":  "J. V. Manjon, P. Coupe, Luis Marti-Bonmati, D. L. Collins, and M. Robles. Adaptive Non-Local Means Denoising of MR Images With Spatially Varying Noise Levels, Journal of Magnetic Resonance Imaging, 31:192-203, June 2010.",
-
-	// Must be an OSI-approved SPDX license string or 'Other'. Ref: https://spdx.org/licenses
 	"license": "Apache-2.0",
-
-	// Where to go to learn more about the gear. You can leave this blank.
 	"url": "https://flywheel_p0.github.io",
-
-	// Where to go for the source code, if applicable. You can leave this blank.
 	"source":  "https://github.com/seldamat/flywheel_p0",
-
-	// (Optional) Environment variables to set for the gear.
 	"environment": {
 		"FLYWHEEL":"/flywheel/v0"
 	},
-
-	// (Optional) Command to execute. Ran inside a bash shell.
 	"command": "python run.py",
-
-	// Options that the gear can use
 	"config": {
-		// Select Noise Model for Denoising
 		"noise_model" : {
 			"type" : "string",
 			"default": "Rician",
 			"description": "Select 'Gaussian' or 'Rician' Noise Model for Denoising. Default is 'Rician.'"
 
 		},
-		// shrink factor for high res images, maximum deres is from nano to milli 
 		"shrink_factor": {
 			"type" : "integer",
 			"default": 1,
@@ -56,61 +28,29 @@
 			"description": "Running noise correction on large images can be time consuming. To lessen computation time, the input image can be resampled. The shrink factor, specified as a single integer, describes this resampling. Shrink factor = 1 is the default."
 		}
 	},
-
-	// Custom tags, in which the user can add any values they would like.
-	// Some of these values are required, such as these gear builder tags.
 	"custom": {
-
 	    "gear-builder": {
-	        // This determines if your gear is a utility (conversion).
-	        // or an analysis gear. 
 	        "category": "analysis",
-
-	        // This is the name of the docker image you'll use in your gear.
 	        "image": "seldamat/flywheel_p0:0.0"
 	    },
-	        
-	    // The flywheel key can provide useful information to the flywheel UI.
 	    "flywheel": {
-	           
-	        // The "suite" key categorizes your gear in the dropdown menu.
-	        // Making gears for different functions easy to identify and distinguish.
 	        "suite": "Flywheel Challenge"
 	     }
 	},
-
-	// Inputs that the gear consumes
 	"inputs": {
-
-		// A label - describes one of the inputs. Used by the user interface and by the run script.
 		"t1w": {
-
-			// Specifies that the input is a single file. For now, it's the only type.
 			"base": "file",
-
-			// (Optional) json-schema syntax to provide further guidance
 			"type": { "enum": [ "nifti" ] },
-
 			"description": "T1w NIFTI structural brain image."
 		},
-
-		// A contextual key-value, provided by the environment. Used for values that are generally the same for an entire project.
-		// Not guaranteed to be found - the gear should decide if it can continue to run, or exit with an error.
 		"matlab_license_code": {
 			"base": "context",
 		},
-
-		// An API key, specific to this job, with the same access as the user that launched the gear.
-		// Useful for aggregations, integrating with an external system, data analysis, or other automated tasks.
 		"key": {
 			"base": "api-key",
-
-			// (Optional) request that the API key only be allowed read access.
 			"read-only": true
 		}
 	},
-
-	// Capabilities the gear requires. Not necessary unless you need a specific feature.
 	"capabilities": [
 		""
 	],
