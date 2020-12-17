@@ -1,8 +1,9 @@
-# flywheel_p0
+# flywheel_p0 dockerfile
 
-# Use brats docker image
+# Use nipype docker image
 FROM nipype/nipype:latest
 
+# required for apt-get
 USER root
 
 LABEL MAINTAINER="Shady El Damaty <eldamaty.shady@gmail.com>"
