@@ -67,7 +67,7 @@
 	        "category": "analysis",
 
 	        // This is the name of the docker image you'll use in your gear.
-	        "image": "nipype/nipype:latest"
+	        "image": "seldamat/flywheel_p0:0.0"
 	    },
 	        
 	    // The flywheel key can provide useful information to the flywheel UI.
