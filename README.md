@@ -5,7 +5,7 @@ This repository contains all of the requirements for building a Flywheel Gear to
 ## Non-Local Denoising
 The acquisition of Magnetic Resonance Images often includes thermal noise that degrades image contrast and disrupts performance of tissue segmentation algorithms. Standard structural image processing pipelines address the issue of noise in the high frequency spatial domain with a simple low-pass smoothing filter. However this disrupts the ability to distinguish tissue boundaries in the brain.
 
-Non-local Means Denoising with a Rician Distribution is an alternative method that preserves edges in images by "assuming that the real part and imaginary part of the MRI image is an uncorrelated Gaussian distribution with a zero mean and equal variance." The Advanced Normalization Tools structural image processing softare package contains an implementation that vastly improves image segmentation results. 
+Non-local Means Denoising with a Rician Distribution is an alternative method that preserves edges in images by "assuming that the real part and imaginary part of the MRI image is an uncorrelated Gaussian distribution with a zero mean and equal variance." The Advanced Normalization Tools structural image processing software package contains an implementation that vastly improves image segmentation results. 
 
 
 ## Upgrading Structural Analysis Pipelines
@@ -126,9 +126,9 @@ Once pushed you can execute on Flywheel.
 
 The gear can be run locally if you have Flywheel installed on your machine. The gear is called along with all the required configuration inputs
 ```
-fw gear local --t1w=${anat_t1w_file} --noise_model='Rician' --shrink_factor=1
+fw gear local --t1w=anat_t1w_file --noise_model='Rician' --shrink_factor=1
 ```
-where `${anat_t1w_file}` is the full path to the anatomical image you'd like to denoise. The user can specify `Rician` or `Gaussian` for denoising and downsample an image up to 1000x.
+where `anat_t1w_file` is the full path (e.g. '/home/user1/data/anat_t1w.nii.gz' to the anatomical image you'd like to denoise. The user can specify `Rician` or `Gaussian` for denoising and downsample an image up to 1000x. The image must be a nifti file.
 
 The docker image will be pulled and the run.py file executed within the container to generate the noise corrected file `sub-hebbianloop_ses-2019a_acq-mprage_t1w_noise_corrected.nii.gz`
 
